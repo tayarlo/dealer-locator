@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { Search, MapPin, Phone, X, ChevronDown, Check } from 'lucide-react';
-import { Dealer, STATES, PRODUCTS } from '@/lib/types';
+import { useEffect, useRef, useState } from 'react';
+import { MapPin, X, ChevronDown, Check } from 'lucide-react';
+import { STATES, PRODUCTS } from '@/lib/types';
 
 interface FilterPanelProps {
   filters: { state: string; area: string; products: string[] };
@@ -15,6 +15,39 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
   const [showStateDropdown, setShowStateDropdown] = useState(false);
   const [showAreaDropdown, setShowAreaDropdown] = useState(false);
   const [showProductsDropdown, setShowProductsDropdown] = useState(false);
+
+  const stateRef = useRef<HTMLDivElement>(null);
+  const areaRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
+
+  const closeAll = () => {
+    setShowStateDropdown(false);
+    setShowAreaDropdown(false);
+    setShowProductsDropdown(false);
+  };
+
+  useEffect(() => {
+    if (!showStateDropdown && !showAreaDropdown && !showProductsDropdown) return;
+
+    const onPointerDown = (e: PointerEvent) => {
+      const target = e.target as Node;
+      const inside =
+        stateRef.current?.contains(target) ||
+        areaRef.current?.contains(target) ||
+        productsRef.current?.contains(target);
+      if (!inside) closeAll();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeAll();
+    };
+
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [showStateDropdown, showAreaDropdown, showProductsDropdown]);
 
   const toggleProduct = (product: string) => {
     const newProducts = filters.products.includes(product)
@@ -46,7 +79,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
       </div>
 
       <div className="space-y-3">
-        <div className="relative">
+        <div className="relative" ref={stateRef}>
           <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
           <button
             onClick={() => {
@@ -82,7 +115,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
           )}
         </div>
 
-        <div className="relative">
+        <div className="relative" ref={areaRef}>
           <label className="block text-sm font-medium text-gray-700 mb-1">Area</label>
           <button
             onClick={() => {
@@ -130,7 +163,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
           )}
         </div>
 
-        <div className="relative">
+        <div className="relative" ref={productsRef}>
           <label className="block text-sm font-medium text-gray-700 mb-1">Products</label>
           <button
             onClick={() => {
@@ -167,6 +200,14 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
                   </span>
                 </button>
               ))}
+              <div className="border-t border-gray-100 p-2">
+                <button
+                  onClick={() => setShowProductsDropdown(false)}
+                  className="w-full px-3 py-2 bg-[#00529B] text-white text-sm font-medium rounded-md hover:bg-[#0077D9] transition-colors"
+                >
+                  Done
+                </button>
+              </div>
             </div>
           )}
         </div>
