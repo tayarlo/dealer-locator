@@ -1,6 +1,6 @@
 import { Dealer } from './types';
 
-const SAMPLE_DEALERS: Dealer[] = [
+export const SAMPLE_DEALERS: Dealer[] = [
   {
     id: '1',
     name: '17 WD Motorsport Rim & Tyres',
