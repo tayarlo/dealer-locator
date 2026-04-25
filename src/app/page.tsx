@@ -84,7 +84,10 @@ function DealerLocator() {
     return result;
   }, [dealers, filters, searchQuery, userLocation]);
 
-  const areas = useMemo(() => getUniqueAreas(dealers), [dealers]);
+  const areas = useMemo(() => {
+    const scoped = filters.state ? dealers.filter(d => d.state === filters.state) : dealers;
+    return getUniqueAreas(scoped);
+  }, [dealers, filters.state]);
 
   // Scroll selected card into view in whichever list is visible.
   useEffect(() => {
