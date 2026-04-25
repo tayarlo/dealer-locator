@@ -11,7 +11,6 @@ import UseMyLocationButton from '@/components/UseMyLocationButton';
 import MobileBottomSheet from '@/components/MobileBottomSheet';
 import { Coords, Dealer, DealerWithDistance } from '@/lib/types';
 import {
-  SAMPLE_DEALERS,
   filterDealers,
   getUniqueAreas,
   searchDealers,
@@ -35,7 +34,9 @@ function DealerLocator() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [dealers] = useState<Dealer[]>(SAMPLE_DEALERS);
+  const [dealers, setDealers] = useState<Dealer[]>([]);
+  const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [filters, setFilters] = useState(EMPTY_FILTERS);
   const [searchQuery, setSearchQuery] = useState('');
   const [userLocation, setUserLocation] = useState<Coords | null>(null);
@@ -49,6 +50,30 @@ function DealerLocator() {
     update();
     mq.addEventListener('change', update);
     return () => mq.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/dealers')
+      .then(async res => {
+        const data = await res.json();
+        if (cancelled) return;
+        if (!res.ok) {
+          setLoadState('error');
+          setLoadError(data.error ?? `Request failed: ${res.status}`);
+          return;
+        }
+        setDealers(data.dealers ?? []);
+        setLoadState('ready');
+      })
+      .catch(err => {
+        if (cancelled) return;
+        setLoadState('error');
+        setLoadError(err instanceof Error ? err.message : 'Network error');
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const dealerIdFromUrl = searchParams.get('dealer');
@@ -166,17 +191,43 @@ function DealerLocator() {
     </div>
   );
 
+  const loadingState = (
+    <div className="flex items-center justify-center py-12 bg-white rounded-xl border border-gray-100">
+      <Loader2 className="w-6 h-6 animate-spin text-[#00529B]" />
+      <span className="ml-3 text-sm text-gray-500">Loading dealers…</span>
+    </div>
+  );
+
+  const errorState = (
+    <div className="text-center py-10 px-4 bg-red-50 rounded-xl border border-red-100">
+      <p className="text-red-700 font-medium mb-1">Could not load dealers</p>
+      <p className="text-sm text-red-600 mb-3">{loadError}</p>
+      <button
+        onClick={() => window.location.reload()}
+        className="px-3 py-1.5 text-sm bg-white border border-red-200 rounded-lg hover:bg-red-50 text-red-700"
+      >
+        Try again
+      </button>
+    </div>
+  );
+
   const dealerList = (
     <div className="space-y-3">
-      {visibleDealers.map(dealer => (
-        <DealerCard
-          key={dealer.id}
-          dealer={dealer}
-          isSelected={selectedDealer?.id === dealer.id}
-          onSelect={handleSelectDealer}
-        />
-      ))}
-      {noResults && emptyState}
+      {loadState === 'loading' && loadingState}
+      {loadState === 'error' && errorState}
+      {loadState === 'ready' && (
+        <>
+          {visibleDealers.map(dealer => (
+            <DealerCard
+              key={dealer.id}
+              dealer={dealer}
+              isSelected={selectedDealer?.id === dealer.id}
+              onSelect={handleSelectDealer}
+            />
+          ))}
+          {noResults && emptyState}
+        </>
+      )}
     </div>
   );
 
@@ -266,17 +317,23 @@ function DealerLocator() {
         {viewMode === 'list' && (
           <>
             <div className="mb-6">{controlsBlock}</div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {visibleDealers.map(dealer => (
-                <DealerCard
-                  key={dealer.id}
-                  dealer={dealer}
-                  isSelected={selectedDealer?.id === dealer.id}
-                  onSelect={handleSelectDealer}
-                />
-              ))}
-            </div>
-            {noResults && <div className="mt-6">{emptyState}</div>}
+            {loadState === 'loading' && loadingState}
+            {loadState === 'error' && errorState}
+            {loadState === 'ready' && (
+              <>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {visibleDealers.map(dealer => (
+                    <DealerCard
+                      key={dealer.id}
+                      dealer={dealer}
+                      isSelected={selectedDealer?.id === dealer.id}
+                      onSelect={handleSelectDealer}
+                    />
+                  ))}
+                </div>
+                {noResults && <div className="mt-6">{emptyState}</div>}
+              </>
+            )}
           </>
         )}
 
