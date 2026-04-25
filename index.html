@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michelin Lifestyle Dealer Locator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#00529B', light: '#0077D9' },
+            accent: '#F47D21'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .custom-marker { background: transparent; border: none; }
+    .leaflet-container { border-radius: 12px; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="font-bold text-gray-900 text-lg">Dealer Locator</h1>
+            <p id="statusText" class="text-xs text-gray-500">Michelin Lifestyle</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
+          <button id="listViewBtn" onclick="setView('list')" class="p-2 rounded-md transition-colors bg-white shadow-sm text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+          <button id="splitViewBtn" onclick="setView('split')" class="p-2 rounded-md transition-colors text-gray-500 hover:text-gray-700 hidden md:block">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          </button>
+          <button id="mapViewBtn" onclick="setView('map')" class="p-2 rounded-md transition-colors text-gray-500 hover:text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div id="loadingIndicator" class="flex flex-col items-center justify-center py-12">
+      <div class="flex items-center gap-3 text-gray-600 mb-4">
+        <svg class="animate-spin w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span id="loadingText">Loading dealers...</span>
+      </div>
+      <div id="progressBar" class="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div id="progress" class="h-full bg-primary transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div id="filtersContainer" class="mb-6 hidden">
+      <div class="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <div class="p-2 bg-primary rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <h2 class="font-semibold text-gray-900">Find Dealers</h2>
+              <p id="dealerCount" class="text-sm text-gray-500">Loading...</p>
+            </div>
+          </div>
+          <button id="clearFiltersBtn" onclick="clearFilters()" class="text-sm text-primary hover:text-primary-light font-medium hidden">Clear All</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
+            <select id="stateFilter" onchange="applyFilters()" class="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-gray-900 hover:bg-gray-50 cursor-pointer">
+              <option value="">Select State</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Area</label>
+            <select id="areaFilter" onchange="applyFilters()" class="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-gray-900 hover:bg-gray-50 cursor-pointer">
+              <option value="">Select Area</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Products</label>
+            <div class="relative">
+              <button onclick="toggleProductsDropdown()" class="w-full flex items-center justify-between px-3 py-2 border border-gray-200 rounded-lg bg-white text-left hover:bg-gray-50">
+                <span id="productsLabel" class="text-gray-400">Select Products</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div id="productsDropdown" class="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                <div class="p-2 max-h-60 overflow-y-auto" id="productsList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="selectedProducts" class="flex flex-wrap gap-2 mt-3"></div>
+      </div>
+    </div>
+
+    <div id="listView" class="hidden grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+
+    <div id="splitView" class="grid grid-cols-1 lg:grid-cols-2 gap-6 hidden">
+      <div class="space-y-4 max-h-[calc(100vh-220px)] overflow-y-auto pr-2">
+        <div id="dealersList" class="space-y-4"></div>
+      </div>
+      <div class="sticky top-24 h-[calc(100vh-220px)]">
+        <div id="map" class="h-full min-h-[400px] rounded-xl overflow-hidden border border-gray-100 shadow-sm"></div>
+      </div>
+    </div>
+
+    <div id="mapView" class="hidden h-[calc(100vh-180px)]">
+      <div id="mapFull" class="h-full rounded-xl overflow-hidden border border-gray-100 shadow-sm"></div>
+    </div>
+
+    <div id="errorMessage" class="hidden bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+      <p class="text-red-600">Failed to load dealers. Using offline data.</p>
+      <button onclick="loadOfflineData()" class="mt-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-light">Load Offline Data</button>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-gray-100 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <p class="text-center text-gray-500 text-sm">© 2026 Tayarlo Sdn Bhd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const PRODUCTS = ['Inflator', 'TPMS', 'Tyre Repair Kit', 'Valve', 'Windshield Fluid', 'Wiper'];
+
+    let dealers = [];
+    let filteredDealers = [];
+    let selectedDealer = null;
+    let currentView = 'split';
+    let selectedProducts = [];
+    let map = null;
+    let mapFull = null;
+    let markers = [];
+    let geocodeCache = {};
+
+    async function geocodeAddress(address) {
+      if (geocodeCache[address]) return geocodeCache[address];
+      try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address + ', Malaysia')}&limit=1`);
+        const data = await response.json();
+        if (data && data.length > 0) {
+          const result = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+          geocodeCache[address] = result;
+          return result;
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    function parseCSVLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') inQuotes = !inQuotes;
+        else if (char === ',' && !inQuotes) { result.push(current.trim()); current = ''; }
+        else current += char;
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    function parseCSV(csvText) {
+      const lines = csvText.split('\n').filter(line => line.trim());
+      const result = [];
+      for (let i = 3; i < lines.length; i++) {
+        const values = parseCSVLine(lines[i]);
+        if (values.length >= 18 && values[1] && values[15] && values[14]) {
+          const name = values[1].trim();
+          const address = values[15].trim();
+          const state = values[14].trim();
+          const area = values[13] ? values[13].trim() : '';
+          let whatsapp = values[17] ? values[17].trim() : '';
+          if (!whatsapp && values[19]) whatsapp = values[19].trim();
+          whatsapp = whatsapp.replace(/[^0-9]/g, '');
+          const phone = values[20] ? values[20].trim() : '';
+          const products = [];
+          try {
+            if (values[3] && parseFloat(values[3]) > 0) products.push('Wiper');
+            if (values[4] && parseFloat(values[4]) > 0) products.push('Windshield Fluid');
+            if (values[5] && parseFloat(values[5]) > 0) products.push('TPMS');
+            if (values[6] && parseFloat(values[6]) > 0) products.push('Valve');
+            if (values[7] && parseFloat(values[7]) > 0) products.push('Inflator');
+            if (values[8] && parseFloat(values[8]) > 0) products.push('Tyre Repair Kit');
+          } catch(e) {}
+          if (name && address && state) {
+            result.push({ id: String(i), name, address, phone, whatsapp, state, area, products });
+          }
+        }
+      }
+      return result;
+    }
+
+    async function loadDealers() {
+      document.getElementById('loadingIndicator').classList.remove('hidden');
+      document.getElementById('filtersContainer').classList.add('hidden');
+      document.getElementById('errorMessage').classList.add('hidden');
+
+      try {
+        const response = await fetch('dealers.csv');
+        if (!response.ok) throw new Error('Failed to fetch');
+        const csvText = await response.text();
+        dealers = parseCSV(csvText);
+        filteredDealers = [...dealers];
+
+        document.getElementById('loadingText').textContent = 'Geocoding addresses for map...';
+        let geocoded = 0;
+        const progress = document.getElementById('progress');
+
+        for (let i = 0; i < dealers.length; i++) {
+          const d = dealers[i];
+          const coords = await geocodeAddress(d.address);
+          if (coords) { d.lat = coords.lat; d.lng = coords.lng; }
+          geocoded++;
+          progress.style.width = `${(geocoded / dealers.length) * 100}%`;
+        }
+
+        finishLoading();
+      } catch (error) {
+        console.error('Error loading dealers:', error);
+        loadOfflineData();
+      }
+    }
+
+    function loadOfflineData() {
+      document.getElementById('loadingText').textContent = 'Loading offline data...';
+      dealers = getOfflineDealers();
+      filteredDealers = [...dealers];
+      finishLoading();
+    }
+
+    function finishLoading() {
+      document.getElementById('loadingIndicator').classList.add('hidden');
+      document.getElementById('filtersContainer').classList.remove('hidden');
+      document.getElementById('splitView').classList.remove('hidden');
+      document.getElementById('listView').classList.remove('hidden');
+      document.getElementById('mapView').classList.remove('hidden');
+      populateFilters();
+      renderProductsCheckboxes();
+      applyFilters();
+      initMap();
+      document.getElementById('statusText').textContent = `${dealers.length} dealers loaded`;
+    }
+
+    function populateFilters() {
+      const stateSelect = document.getElementById('stateFilter');
+      stateSelect.innerHTML = '<option value="">Select State</option>';
+      const statesInData = [...new Set(dealers.map(d => d.state).filter(Boolean))].sort();
+      statesInData.forEach(state => {
+        const option = document.createElement('option');
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
+      });
+      updateAreaFilter();
+    }
+
+    function updateAreaFilter() {
+      const state = document.getElementById('stateFilter').value;
+      const areaSelect = document.getElementById('areaFilter');
+      areaSelect.innerHTML = '<option value="">Select Area</option>';
+      const areas = new Set(dealers.filter(d => !state || d.state === state).map(d => d.area).filter(Boolean));
+      Array.from(areas).sort().forEach(area => {
+        const option = document.createElement('option');
+        option.value = area;
+        option.textContent = area;
+        areaSelect.appendChild(option);
+      });
+    }
+
+    function renderProductsCheckboxes() {
+      const container = document.getElementById('productsList');
+      container.innerHTML = PRODUCTS.map(p => `
+        <label class="flex items-center gap-3 px-2 py-1.5 hover:bg-gray-50 rounded cursor-pointer">
+          <input type="checkbox" value="${p}" onchange="toggleProduct('${p}')" class="w-4 h-4 text-primary rounded border-gray-300">
+          <span class="text-sm text-gray-700">${p}</span>
+        </label>
+      `).join('');
+    }
+
+    function toggleProductsDropdown() { document.getElementById('productsDropdown').classList.toggle('hidden'); }
+
+    function toggleProduct(product) {
+      if (selectedProducts.includes(product)) selectedProducts = selectedProducts.filter(p => p !== product);
+      else selectedProducts = [...selectedProducts, product];
+      updateProductsLabel();
+      applyFilters();
+    }
+
+    function updateProductsLabel() {
+      const label = document.getElementById('productsLabel');
+      const container = document.getElementById('selectedProducts');
+      if (selectedProducts.length > 0) {
+        label.textContent = `${selectedProducts.length} selected`;
+        label.classList.remove('text-gray-400');
+        label.classList.add('text-gray-900');
+        container.innerHTML = selectedProducts.map(p => `<span class="inline-flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">${p}<button onclick="toggleProduct('${p}')" class="hover:bg-primary/20 rounded-full p-0.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></span>`).join('');
+      } else {
+        label.textContent = 'Select Products';
+        label.classList.add('text-gray-400');
+        label.classList.remove('text-gray-900');
+        container.innerHTML = '';
+      }
+    }
+
+    function applyFilters() {
+      const state = document.getElementById('stateFilter').value;
+      const area = document.getElementById('areaFilter').value;
+      updateAreaFilter();
+      filteredDealers = dealers.filter(d => {
+        if (state && d.state !== state) return false;
+        if (area && d.area !== area) return false;
+        if (selectedProducts.length > 0 && !selectedProducts.every(p => d.products.includes(p))) return false;
+        return true;
+      });
+      document.getElementById('dealerCount').textContent = `${filteredDealers.length} dealers found`;
+      document.getElementById('clearFiltersBtn').classList.toggle('hidden', !state && !area && selectedProducts.length === 0);
+      renderDealers();
+      updateMarkers();
+    }
+
+    function clearFilters() {
+      document.getElementById('stateFilter').value = '';
+      document.getElementById('areaFilter').value = '';
+      selectedProducts = [];
+      updateProductsLabel();
+      updateAreaFilter();
+      applyFilters();
+    }
+
+    function renderDealers() {
+      const container = document.getElementById('dealersList');
+      const listViewContainer = document.getElementById('listView');
+      container.innerHTML = filteredDealers.length === 0 ? `<div class="text-center py-12 bg-white rounded-xl border border-gray-100"><svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-300 mx-auto mb-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><p class="text-gray-500 text-lg">No dealers found</p><button onclick="clearFilters()" class="mt-4 text-primary hover:text-primary-light font-medium">Clear filters</button></div>` : filteredDealers.map(d => `<div onclick="selectDealer('${d.id}')" class="p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${selectedDealer?.id === d.id ? 'border-primary bg-blue-50 shadow-md' : 'border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm'}"><div class="flex justify-between items-start mb-2"><h3 class="font-semibold text-gray-900 text-lg leading-tight">${d.name}</h3>${selectedDealer?.id === d.id ? '<span class="px-2 py-1 bg-primary text-white text-xs rounded-full">Selected</span>' : ''}</div><div class="flex items-start gap-2 text-gray-600 mb-3"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-1 flex-shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><p class="text-sm leading-relaxed">${d.address}</p></div><div class="flex items-center gap-2 text-gray-600 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><p class="text-sm">${d.phone}</p></div><div class="flex flex-wrap gap-2 mb-4">${d.products.map(p => `<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md font-medium">${p}</span>`).join('')}</div><div class="flex gap-2"><button onclick="event.stopPropagation(); getDirections('${d.address}')" class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>Directions</button><button onclick="event.stopPropagation(); openWhatsApp('${d.whatsapp}')" class="flex items-center gap-2 px-3 py-2 bg-[#25D366] rounded-lg text-sm font-medium text-white hover:bg-[#20BD5A] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</button></div></div>`).join('');
+      listViewContainer.innerHTML = container.innerHTML;
+    }
+
+    function selectDealer(id) {
+      selectedDealer = filteredDealers.find(d => d.id === id) || null;
+      renderDealers();
+      if (selectedDealer && map && selectedDealer.lat && selectedDealer.lng) {
+        map.setView([selectedDealer.lat, selectedDealer.lng], 14, { animate: true, duration: 0.5 });
+      }
+      updateMarkers();
+    }
+
+    function getDirections(address) { window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`, '_blank'); }
+    function openWhatsApp(phone) { const p = phone.replace(/[^0-9]/g, ''); if (p) window.open(`https://wa.me/${p}`, '_blank'); }
+
+    function initMap() {
+      map = L.map('map').setView([3.8, 101.5], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 18 }).addTo(map);
+      updateMarkers();
+      mapFull = L.map('mapFull').setView([3.8, 101.5], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 18 }).addTo(mapFull);
+    }
+
+    function updateMarkers() {
+      [map, mapFull].forEach(m => {
+        if (m) m.eachLayer(layer => { if (layer instanceof L.Marker) m.removeLayer(layer); });
+      });
+      markers = [];
+      const defaultIcon = L.divIcon({ className: 'custom-marker', html: `<div style="background:#00529B;width:32px;height:32px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`, iconSize: [32, 32], iconAnchor: [16, 32] });
+      const selectedIcon = L.divIcon({ className: 'custom-marker', html: `<div style="background:#F47D21;width:40px;height:40px;border-radius:50%;border:4px solid white;box-shadow:0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`, iconSize: [40, 40], iconAnchor: [20, 40] });
+      [map, mapFull].forEach(m => {
+        if (!m) return;
+        filteredDealers.forEach(dealer => {
+          if (dealer.lat && dealer.lng) {
+            const icon = selectedDealer?.id === dealer.id ? selectedIcon : defaultIcon;
+            const marker = L.marker([dealer.lat, dealer.lng], { icon }).addTo(m);
+            marker.on('click', () => selectDealer(dealer.id));
+            markers.push(marker);
+          }
+        });
+      });
+      if (filteredDealers.length > 0 && !selectedDealer) {
+        const validDealers = filteredDealers.filter(d => d.lat && d.lng);
+        if (validDealers.length > 0) {
+          const bounds = L.latLngBounds(validDealers.map(d => [d.lat, d.lng]));
+          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 12 });
+          if (mapFull) mapFull.fitBounds(bounds, { padding: [50, 50], maxZoom: 12 });
+        }
+      }
+    }
+
+    function setView(view) {
+      currentView = view;
+      document.getElementById('listView').classList.add('hidden');
+      document.getElementById('splitView').classList.add('hidden');
+      document.getElementById('mapView').classList.add('hidden');
+      document.getElementById('listViewBtn').classList.remove('bg-white', 'shadow-sm', 'text-primary');
+      document.getElementById('splitViewBtn').classList.remove('bg-white', 'shadow-sm', 'text-primary');
+      document.getElementById('mapViewBtn').classList.remove('bg-white', 'shadow-sm', 'text-primary');
+      document.getElementById('listViewBtn').classList.add('text-gray-500');
+      document.getElementById('splitViewBtn').classList.add('text-gray-500');
+      document.getElementById('mapViewBtn').classList.add('text-gray-500');
+      if (view === 'list') {
+        document.getElementById('listView').classList.remove('hidden');
+        document.getElementById('listViewBtn').classList.add('bg-white', 'shadow-sm', 'text-primary');
+        document.getElementById('listViewBtn').classList.remove('text-gray-500');
+      } else if (view === 'split') {
+        document.getElementById('splitView').classList.remove('hidden');
+        document.getElementById('splitViewBtn').classList.add('bg-white', 'shadow-sm', 'text-primary');
+        document.getElementById('splitViewBtn').classList.remove('text-gray-500');
+        setTimeout(() => { map.invalidateSize(); }, 100);
+      } else {
+        document.getElementById('mapView').classList.remove('hidden');
+        document.getElementById('mapViewBtn').classList.add('bg-white', 'shadow-sm', 'text-primary');
+        document.getElementById('mapViewBtn').classList.remove('text-gray-500');
+        setTimeout(() => { if (mapFull) mapFull.invalidateSize(); }, 100);
+      }
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#productsDropdown') && !e.target.closest('button[onclick="toggleProductsDropdown()"]')) {
+        document.getElementById('productsDropdown')?.classList.add('hidden');
+      }
+    });
+
+    function getOfflineDealers() {
+      return [
+        {id:'1',name:'Chong Sheng Tyre Plus Service Centre',address:'120f, Jalan Bandar Teknologi, Bandar Teknologi Kajang, Semenyih, Selangor 43500',phone:'6016-2631 160',whatsapp:'60162631160',state:'Selangor',area:'Semenyih',products:['Wiper','Valve'],lat:2.9500,lng:101.8500},
+        {id:'2',name:'Chong Sheng Tyre & Auto Service Centre',address:'No. 38 A-G, Jalan Pandan Cahaya 2/2, Ampang 68000 Malaysia',phone:'6016-2631 160',whatsapp:'60162631160',state:'Selangor',area:'Ampang',products:['Wiper','Valve'],lat:3.1300,lng:101.7600},
+        {id:'3',name:'City HTC Sdn Bhd',address:'No 33, Jalan AWF3 Ampang Water Front, Ampang 68000 Malaysia',phone:'6018-2618 488',whatsapp:'60182618488',state:'Selangor',area:'Ampang',products:['Valve'],lat:3.1300,lng:101.7600},
+        {id:'4',name:'CN Auto Tyre Sdn Bhd',address:'No.67,Jalan Nilam 1/2, Subang Hi-Tech Industrial Park, Subang Jaya 47500 Malaysia',phone:'6016-2943 515',whatsapp:'60162943515',state:'Selangor',area:'Subang Jaya',products:['Valve','TPMS','Inflator'],lat:3.0738,lng:101.5185},
+        {id:'5',name:'Fastfit Motorsports Sdn Bhd (Semenyih)',address:'No 1-5 Jalan Seri Mawar 1, Taman Seri Mawar, Semenyih, Selangor 43500',phone:'6017-7135 599',whatsapp:'60177135599',state:'Selangor',area:'Semenyih',products:['TPMS','Valve'],lat:2.9500,lng:101.8500},
+        {id:'6',name:'Hexagold Sdn Bhd',address:'No.31, Jalan Puteri 5/3, Bandar Puteri Puchong, Puchong 47100 Malaysia',phone:'6012-6623 835',whatsapp:'60126623835',state:'Selangor',area:'Puchong',products:['Wiper','Valve','TPMS','Inflator'],lat:3.0150,lng:101.6050},
+        {id:'7',name:'Shah Alam Tyres & Auto Accessories Sdn Bhd',address:'LOT 53,Jalan Utas 15/7, SEC 15, Shah Alam 40000 Malaysia',phone:'6012-2351 700',whatsapp:'60122351700',state:'Selangor',area:'Shah Alam',products:['Wiper','Valve','TPMS','Inflator','Tyre Repair Kit'],lat:3.0738,lng:101.5185},
+        {id:'8',name:'GM Wheel Auto Sdn Bhd',address:'21, Jalan Penyelenggara U1/73, Hicom-glenmarie Industrial Park, 40150 Shah Alam, Selangor',phone:'6011-3903 187',whatsapp:'601139030187',state:'Selangor',area:'Shah Alam',products:['Inflator','TPMS','Valve','Windshield Fluid','Wiper','Tyre Repair Kit'],lat:3.0738,lng:101.5185},
+        {id:'9',name:'Titan Car Care Sdn Bhd',address:'No 1, Lorong Perusahaan 1,Taman Kimpal Industri, 68100 Batu Caves Selangor',phone:'6017-4861 252',whatsapp:'60174861252',state:'Selangor',area:'Batu Caves',products:['Wiper','Windshield Fluid','TPMS','Valve','Inflator','Tyre Repair Kit'],lat:3.2000,lng:101.6800},
+        {id:'10',name:'Fastfit Motorsports Sdn Bhd (Cheras)',address:'17, Persiaran Mewah, Bandar Tun Razak, 56000 Kuala Lumpur',phone:'6017-7577 708',whatsapp:'60177577708',state:'Kuala Lumpur',area:'Cheras',products:['Inflator','TPMS','Valve','Windshield Fluid','Wiper','Tyre Repair Kit'],lat:3.1074,lng:101.7165},
+      ];
+    }
+
+    loadDealers();
+  </script>
+</body>
+</html>

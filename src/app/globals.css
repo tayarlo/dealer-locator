@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #00529B;
+  --primary-light: #0077D9;
+  --accent: #F47D21;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#00529B] to-[#0077D9] bg-clip-text text-transparent;
+  }
+}
