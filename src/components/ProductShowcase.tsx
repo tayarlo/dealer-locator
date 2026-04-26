@@ -1,21 +1,19 @@
-import { Wind, Droplets, Gauge, Wrench, CircleDot } from 'lucide-react';
-
 interface ProductShowcaseProps {
   className?: string;
 }
 
 const PRODUCTS = [
-  { label: 'TPMS Valve Caps', icon: CircleDot },
-  { label: 'Tyre Inflator', icon: Gauge },
-  { label: 'Wiper Blades', icon: Wind },
-  { label: 'Wiper Fluid', icon: Droplets },
-  { label: 'Tyre Repair Kit', icon: Wrench },
+  { label: 'TPMS Valve Caps', img: '/products/tpms.png' },
+  { label: 'Tyre Inflator', img: '/products/inflator.png' },
+  { label: 'Wiper Blades', img: '/products/wiper.png' },
+  { label: 'Wiper Fluid', img: '/products/wiper-fluid.png' },
+  { label: 'Tyre Repair Kit', img: '/products/repair-kit.png' },
 ];
 
 /**
- * Horizontal showcase of the 5 Michelin Lifestyle accessories every
- * dealer in the directory is licensed to carry. Sits between the header
- * and the search/list — sets product expectations before the user dives in.
+ * Hero band below the header. Real product photography (with white
+ * backgrounds blended out via mix-blend-mode) sells the assortment far
+ * better than abstract icons.
  */
 export default function ProductShowcase({ className = '' }: ProductShowcaseProps) {
   return (
@@ -23,47 +21,54 @@ export default function ProductShowcase({ className = '' }: ProductShowcaseProps
       className={`relative overflow-hidden ${className}`}
       style={{
         background:
-          'linear-gradient(135deg, rgba(0,51,160,0.04) 0%, rgba(230,17,106,0.05) 100%)',
-        borderTop: '1px solid rgba(0,0,0,0.04)',
-        borderBottom: '1px solid rgba(0,0,0,0.04)',
+          'linear-gradient(135deg, rgba(0,51,160,0.05) 0%, rgba(230,17,106,0.05) 100%)',
+        borderTop: '1px solid rgba(0,0,0,0.05)',
+        borderBottom: '1px solid rgba(0,0,0,0.05)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
-          <div className="flex-shrink-0">
-            <p
-              className="text-[10px] font-semibold uppercase tracking-[0.18em]"
-              style={{ color: 'var(--michelin-blue)' }}
-            >
-              Every dealer carries
-            </p>
-            <h2 className="text-base sm:text-lg font-bold mt-1 leading-tight" style={{ color: 'var(--ink)' }}>
-              Genuine Michelin Lifestyle
-              <br className="hidden sm:inline" /> Accessories
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-10">
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/michelin-logo.png"
+              alt="Michelin"
+              className="h-7 w-auto select-none"
+              style={{ mixBlendMode: 'multiply' }}
+              draggable={false}
+            />
+            <span
+              className="hidden sm:block h-8 w-px"
+              style={{ background: 'rgba(0,0,0,0.12)' }}
+              aria-hidden="true"
+            />
+            <h2 className="text-sm sm:text-base font-semibold leading-snug" style={{ color: 'var(--ink)' }}>
+              Vehicle Accessories<br className="hidden sm:inline" />
+              <span className="font-normal" style={{ color: 'var(--ink-soft)' }}> stocked at every dealer</span>
             </h2>
           </div>
 
           <div className="flex-1">
             <ul className="flex flex-wrap gap-2 sm:gap-2.5">
-              {PRODUCTS.map(({ label, icon: Icon }) => (
+              {PRODUCTS.map(({ label, img }) => (
                 <li
                   key={label}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white border text-sm font-medium shadow-sm"
+                  className="flex items-center gap-2 pl-1.5 pr-3.5 py-1 rounded-xl bg-white border text-sm font-medium shadow-sm"
                   style={{
                     borderColor: 'rgba(0,51,160,0.12)',
                     color: 'var(--ink)',
                   }}
                 >
-                  <span
-                    className="flex items-center justify-center w-7 h-7 rounded-md"
-                    style={{ background: 'var(--michelin-blue-tint)' }}
-                  >
-                    <Icon
-                      className="w-4 h-4"
-                      style={{ color: 'var(--michelin-blue)' }}
-                      strokeWidth={2.2}
-                    />
-                  </span>
+                  {/* Product photo sits directly on the white chip — mix-blend
+                      multiply makes the white photo background invisible. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img}
+                    alt={label}
+                    className="w-10 h-10 object-contain flex-shrink-0"
+                    style={{ mixBlendMode: 'multiply' }}
+                    draggable={false}
+                  />
                   {label}
                 </li>
               ))}

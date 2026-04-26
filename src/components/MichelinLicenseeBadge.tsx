@@ -1,5 +1,3 @@
-import { ShieldCheck } from 'lucide-react';
-
 interface MichelinLicenseeBadgeProps {
   /** Compact = pill-style mini-badge for cards. Full = larger header pill. */
   variant?: 'compact' | 'full';
@@ -7,9 +5,9 @@ interface MichelinLicenseeBadgeProps {
 }
 
 /**
- * Trust mark shown beside dealer info / in the header to certify
- * every dealer in the directory is an Official Michelin Licensee
- * carrying genuine Michelin Lifestyle accessories.
+ * Trust mark certifying every dealer in the directory is an authorised
+ * Michelin Lifestyle accessories licensee. Uses the official Michelin
+ * logo (Bibendum + wordmark) from /public.
  */
 export default function MichelinLicenseeBadge({
   variant = 'full',
@@ -18,44 +16,55 @@ export default function MichelinLicenseeBadge({
   if (variant === 'compact') {
     return (
       <span
-        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${className}`}
+        className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider ${className}`}
         style={{
           background: 'var(--michelin-blue-tint)',
           color: 'var(--michelin-blue)',
         }}
       >
-        <ShieldCheck className="w-3 h-3" strokeWidth={2.5} />
-        Official Michelin Licensee
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/michelin-logo.png"
+          alt="Michelin"
+          className="h-3.5 w-auto select-none"
+          style={{ mixBlendMode: 'multiply' }}
+          draggable={false}
+        />
+        Authorised Vehicle Accessories Dealer
       </span>
     );
   }
 
   return (
     <div
-      className={`inline-flex items-center gap-2.5 pl-2.5 pr-3.5 py-1.5 rounded-full border ${className}`}
-      style={{
-        background: 'white',
-        borderColor: 'var(--michelin-blue)',
-      }}
+      className={`inline-flex items-center gap-3 pl-3 pr-4 py-2 rounded-full border bg-white ${className}`}
+      style={{ borderColor: 'rgba(0,51,160,0.18)' }}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/michelin-logo.png"
+        alt="Michelin"
+        className="h-6 w-auto select-none"
+        style={{ mixBlendMode: 'multiply' }}
+        draggable={false}
+      />
       <span
-        className="flex items-center justify-center w-6 h-6 rounded-full"
-        style={{ background: 'var(--michelin-blue)' }}
-      >
-        <ShieldCheck className="w-3.5 h-3.5 text-white" strokeWidth={2.6} />
-      </span>
+        className="h-6 w-px"
+        style={{ background: 'rgba(0,0,0,0.12)' }}
+        aria-hidden="true"
+      />
       <div className="flex flex-col leading-tight">
         <span
-          className="text-[10px] font-medium uppercase tracking-[0.14em]"
+          className="text-[9px] font-medium uppercase tracking-[0.16em]"
           style={{ color: 'var(--ink-soft)' }}
         >
-          Official
+          Authorised
         </span>
         <span
-          className="text-[13px] font-bold leading-none"
+          className="text-[12px] font-bold leading-none whitespace-nowrap"
           style={{ color: 'var(--michelin-blue)' }}
         >
-          Michelin Licensee
+          Vehicle Accessories Dealer
         </span>
       </div>
     </div>

@@ -1,7 +1,8 @@
 'use client';
 
-import { Clock, MapPin, MessageCircle, Navigation, Phone, ShieldCheck } from 'lucide-react';
+import { Clock, MapPin, MessageCircle, Navigation, Phone } from 'lucide-react';
 import { Dealer, DealerWithDistance } from '@/lib/types';
+import MichelinLicenseeBadge from './MichelinLicenseeBadge';
 
 interface DealerCardProps {
   dealer: Dealer | DealerWithDistance;
@@ -49,13 +50,7 @@ export default function DealerCard({ dealer, isSelected, onSelect }: DealerCardP
     >
       {/* Trust strip + distance */}
       <div className="flex items-center justify-between gap-2 mb-3">
-        <span
-          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
-          style={{ background: 'var(--michelin-blue-tint)', color: 'var(--michelin-blue)' }}
-        >
-          <ShieldCheck className="w-3 h-3" strokeWidth={2.5} />
-          Michelin Licensee
-        </span>
+        <MichelinLicenseeBadge variant="compact" />
         {distanceKm != null && (
           <span className="px-2.5 py-0.5 bg-[#E6116A] text-white text-xs rounded-full whitespace-nowrap font-semibold">
             {formatDistance(distanceKm)}
