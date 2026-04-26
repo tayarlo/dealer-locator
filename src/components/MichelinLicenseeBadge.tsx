@@ -30,7 +30,7 @@ export default function MichelinLicenseeBadge({
           style={{ mixBlendMode: 'multiply' }}
           draggable={false}
         />
-        Authorised Vehicle Accessories Dealer
+        Vehicle Accessories Licensee
       </span>
     );
   }
@@ -44,27 +44,27 @@ export default function MichelinLicenseeBadge({
       <img
         src="/michelin-logo.png"
         alt="Michelin"
-        className="h-6 w-auto select-none"
+        className="h-9 w-auto select-none"
         style={{ mixBlendMode: 'multiply' }}
         draggable={false}
       />
       <span
-        className="h-6 w-px"
+        className="h-9 w-px"
         style={{ background: 'rgba(0,0,0,0.12)' }}
         aria-hidden="true"
       />
-      <div className="flex flex-col leading-tight">
+      <div className="flex flex-col leading-tight gap-0.5">
         <span
-          className="text-[9px] font-medium uppercase tracking-[0.16em]"
+          className="text-[10px] font-medium uppercase tracking-[0.16em]"
           style={{ color: 'var(--ink-soft)' }}
         >
-          Authorised
+          Vehicle Accessories
         </span>
         <span
-          className="text-[12px] font-bold leading-none whitespace-nowrap"
+          className="text-[15px] font-bold leading-none whitespace-nowrap"
           style={{ color: 'var(--michelin-blue)' }}
         >
-          Vehicle Accessories Dealer
+          Licensee
         </span>
       </div>
     </div>

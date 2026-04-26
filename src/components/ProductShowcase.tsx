@@ -3,7 +3,7 @@ interface ProductShowcaseProps {
 }
 
 const PRODUCTS = [
-  { label: 'TPMS Valve Caps', img: '/products/tpms.png' },
+  { label: 'TPMS', img: '/products/tpms.png' },
   { label: 'Tyre Inflator', img: '/products/inflator.png' },
   { label: 'Wiper Blades', img: '/products/wiper.png' },
   { label: 'Wiper Fluid', img: '/products/wiper-fluid.png' },
