@@ -28,23 +28,22 @@ export default function ProductShowcase({ className = '' }: ProductShowcaseProps
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6">
         <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-10">
-          <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="flex items-center gap-4 flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/michelin-logo.png"
               alt="Michelin"
-              className="h-7 w-auto select-none"
+              className="h-12 sm:h-14 w-auto select-none"
               style={{ mixBlendMode: 'multiply' }}
               draggable={false}
             />
             <span
-              className="hidden sm:block h-8 w-px"
+              className="hidden sm:block h-10 w-px"
               style={{ background: 'rgba(0,0,0,0.12)' }}
               aria-hidden="true"
             />
-            <h2 className="text-sm sm:text-base font-semibold leading-snug" style={{ color: 'var(--ink)' }}>
-              Vehicle Accessories<br className="hidden sm:inline" />
-              <span className="font-normal" style={{ color: 'var(--ink-soft)' }}> stocked at every dealer</span>
+            <h2 className="text-base sm:text-lg font-bold leading-tight" style={{ color: 'var(--ink)' }}>
+              Vehicle Accessories
             </h2>
           </div>
 
