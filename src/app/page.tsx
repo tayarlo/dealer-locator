@@ -9,6 +9,9 @@ import DealerCard from '@/components/DealerCard';
 import SearchBar from '@/components/SearchBar';
 import UseMyLocationButton from '@/components/UseMyLocationButton';
 import MobileBottomSheet from '@/components/MobileBottomSheet';
+import TayarloLogo from '@/components/TayarloLogo';
+import MichelinLicenseeBadge from '@/components/MichelinLicenseeBadge';
+import ProductShowcase from '@/components/ProductShowcase';
 import { Coords, Dealer, DealerWithDistance } from '@/lib/types';
 import {
   filterDealers,
@@ -21,7 +24,7 @@ const MapView = dynamic(() => import('@/components/MapView'), {
   ssr: false,
   loading: () => (
     <div className="h-full flex items-center justify-center bg-gray-100 rounded-xl">
-      <Loader2 className="w-8 h-8 animate-spin text-[#00529B]" />
+      <Loader2 className="w-8 h-8 animate-spin text-[#E6116A]" />
     </div>
   ),
 });
@@ -166,7 +169,7 @@ function DealerLocator() {
         {hasActiveFilters && (
           <button
             onClick={clearAll}
-            className="px-3 py-1.5 text-sm bg-[#00529B] text-white rounded-lg hover:bg-[#0077D9]"
+            className="px-3 py-1.5 text-sm bg-[#E6116A] text-white rounded-lg hover:bg-[#C00E5C]"
           >
             Clear everything
           </button>
@@ -193,7 +196,7 @@ function DealerLocator() {
 
   const loadingState = (
     <div className="flex items-center justify-center py-12 bg-white rounded-xl border border-gray-100">
-      <Loader2 className="w-6 h-6 animate-spin text-[#00529B]" />
+      <Loader2 className="w-6 h-6 animate-spin text-[#E6116A]" />
       <span className="ml-3 text-sm text-gray-500">Loading dealers…</span>
     </div>
   );
@@ -235,15 +238,11 @@ function DealerLocator() {
     <div className="min-h-screen lg:min-h-[unset]">
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#00529B] to-[#0077D9] rounded-lg flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="font-bold text-gray-900 text-lg">Dealer Locator</h1>
-                <p className="text-xs text-gray-500">Michelin Lifestyle</p>
-              </div>
+          <div className="flex items-center justify-between h-16 gap-3">
+            <TayarloLogo size={36} />
+
+            <div className="hidden md:block">
+              <MichelinLicenseeBadge variant="full" />
             </div>
 
             <div className="hidden lg:flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
@@ -252,7 +251,7 @@ function DealerLocator() {
                 aria-label="List view"
                 className={`p-2 rounded-md transition-colors ${
                   viewMode === 'list'
-                    ? 'bg-white shadow-sm text-[#00529B]'
+                    ? 'bg-white shadow-sm text-[#E6116A]'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -263,7 +262,7 @@ function DealerLocator() {
                 aria-label="Split view"
                 className={`p-2 rounded-md transition-colors ${
                   viewMode === 'split'
-                    ? 'bg-white shadow-sm text-[#00529B]'
+                    ? 'bg-white shadow-sm text-[#E6116A]'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -274,7 +273,7 @@ function DealerLocator() {
                 aria-label="Map view"
                 className={`p-2 rounded-md transition-colors ${
                   viewMode === 'map'
-                    ? 'bg-white shadow-sm text-[#00529B]'
+                    ? 'bg-white shadow-sm text-[#E6116A]'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -283,7 +282,15 @@ function DealerLocator() {
             </div>
           </div>
         </div>
+
+        {/* Compact licensee badge for narrow screens (header is too tight) */}
+        <div className="md:hidden border-t border-gray-100 bg-white px-4 py-2 flex justify-center">
+          <MichelinLicenseeBadge variant="full" />
+        </div>
       </header>
+
+      {/* Product showcase — only visible in desktop layout (mobile uses bottom sheet over a full-bleed map) */}
+      {!isMobile && <ProductShowcase />}
 
       {/* Mobile layout: map fills viewport with bottom sheet on top */}
       {isMobile && (
@@ -386,7 +393,7 @@ export default function Page() {
     <Suspense
       fallback={
         <div className="min-h-screen flex items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-[#00529B]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#E6116A]" />
         </div>
       }
     >

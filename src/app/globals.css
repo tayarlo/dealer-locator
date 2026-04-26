@@ -1,11 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #00529B;
-  --primary-light: #0077D9;
-  --accent: #F47D21;
+  /* Tayarlo brand */
+  --tayarlo-primary: #E6116A;
+  --tayarlo-primary-dark: #C00E5C;
+  --tayarlo-primary-light: #F03C8C;
+  --tayarlo-tint: #FCE8F1;
+
+  /* Michelin licensee accents */
+  --michelin-blue: #0033A0;
+  --michelin-blue-tint: #E5EAF6;
+  --michelin-yellow: #FFD500;
+
+  /* Neutrals */
+  --ink: #1F1A2E;
+  --ink-soft: #4A4459;
+  --surface: #FAFAFB;
+}
+
+html, body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--surface);
 }
+
+@keyframes tayarlo-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+.tayarlo-pulse { animation: tayarlo-pulse 2.4s ease-in-out infinite; }

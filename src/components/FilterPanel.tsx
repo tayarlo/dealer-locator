@@ -60,7 +60,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
     <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <div className="p-2 bg-[#00529B] rounded-lg">
+          <div className="p-2 bg-[#E6116A] rounded-lg">
             <MapPin className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -71,7 +71,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
         {(filters.state || filters.area || filters.products.length > 0) && (
           <button
             onClick={() => onFilterChange({ state: '', area: '', products: [] })}
-            className="text-sm text-[#00529B] hover:text-[#0077D9] font-medium"
+            className="text-sm text-[#E6116A] hover:text-[#C00E5C] font-medium"
           >
             Clear All
           </button>
@@ -105,10 +105,10 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
                   }}
                   className="w-full flex items-center justify-between px-3 py-2 hover:bg-gray-50 text-left"
                 >
-                  <span className={filters.state === state ? 'text-[#00529B] font-medium' : 'text-gray-700'}>
+                  <span className={filters.state === state ? 'text-[#E6116A] font-medium' : 'text-gray-700'}>
                     {state}
                   </span>
-                  {filters.state === state && <Check className="w-4 h-4 text-[#00529B]" />}
+                  {filters.state === state && <Check className="w-4 h-4 text-[#E6116A]" />}
                 </button>
               ))}
             </div>
@@ -139,10 +139,10 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
                 }}
                 className="w-full flex items-center justify-between px-3 py-2 hover:bg-gray-50 text-left"
               >
-                <span className={!filters.area ? 'text-[#00529B] font-medium' : 'text-gray-700'}>
+                <span className={!filters.area ? 'text-[#E6116A] font-medium' : 'text-gray-700'}>
                   All Areas
                 </span>
-                {!filters.area && <Check className="w-4 h-4 text-[#00529B]" />}
+                {!filters.area && <Check className="w-4 h-4 text-[#E6116A]" />}
               </button>
               {areas.map(area => (
                 <button
@@ -153,10 +153,10 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
                   }}
                   className="w-full flex items-center justify-between px-3 py-2 hover:bg-gray-50 text-left"
                 >
-                  <span className={filters.area === area ? 'text-[#00529B] font-medium' : 'text-gray-700'}>
+                  <span className={filters.area === area ? 'text-[#E6116A] font-medium' : 'text-gray-700'}>
                     {area}
                   </span>
-                  {filters.area === area && <Check className="w-4 h-4 text-[#00529B]" />}
+                  {filters.area === area && <Check className="w-4 h-4 text-[#E6116A]" />}
                 </button>
               ))}
             </div>
@@ -188,14 +188,14 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
                 >
                   <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                     filters.products.includes(product)
-                      ? 'bg-[#00529B] border-[#00529B]'
+                      ? 'bg-[#E6116A] border-[#E6116A]'
                       : 'border-gray-300'
                   }`}>
                     {filters.products.includes(product) && (
                       <Check className="w-3 h-3 text-white" />
                     )}
                   </div>
-                  <span className={filters.products.includes(product) ? 'text-[#00529B] font-medium' : 'text-gray-700'}>
+                  <span className={filters.products.includes(product) ? 'text-[#E6116A] font-medium' : 'text-gray-700'}>
                     {product}
                   </span>
                 </button>
@@ -203,7 +203,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
               <div className="border-t border-gray-100 p-2">
                 <button
                   onClick={() => setShowProductsDropdown(false)}
-                  className="w-full px-3 py-2 bg-[#00529B] text-white text-sm font-medium rounded-md hover:bg-[#0077D9] transition-colors"
+                  className="w-full px-3 py-2 bg-[#E6116A] text-white text-sm font-medium rounded-md hover:bg-[#C00E5C] transition-colors"
                 >
                   Done
                 </button>
@@ -218,7 +218,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
           {filters.products.map(product => (
             <span
               key={product}
-              className="inline-flex items-center gap-1 px-2 py-1 bg-[#00529B]/10 text-[#00529B] text-xs rounded-full"
+              className="inline-flex items-center gap-1 px-2 py-1 bg-[#E6116A]/10 text-[#E6116A] text-xs rounded-full"
             >
               {product}
               <button
@@ -226,7 +226,7 @@ export default function FilterPanel({ filters, onFilterChange, areas, dealerCoun
                   e.stopPropagation();
                   toggleProduct(product);
                 }}
-                className="hover:bg-[#00529B]/20 rounded-full p-0.5"
+                className="hover:bg-[#E6116A]/20 rounded-full p-0.5"
               >
                 <X className="w-3 h-3" />
               </button>
