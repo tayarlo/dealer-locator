@@ -1,0 +1,968 @@
+{
+  "641b9a1050f2f49e": {
+    "lat": 2.9704572,
+    "lng": 101.8265451,
+    "geocodedAt": "2026-04-25T13:28:26.004Z"
+  },
+  "ed5f06d739a893ec": {
+    "lat": 3.1502556,
+    "lng": 101.7602101,
+    "geocodedAt": "2026-04-25T23:58:58.693Z",
+    "approxFromQuery": "Ampang, Selangor, Malaysia"
+  },
+  "771a4bcf5d09c9aa": {
+    "lat": 3.1502556,
+    "lng": 101.7602101,
+    "geocodedAt": "2026-04-25T23:58:58.720Z",
+    "approxFromQuery": "Ampang, Selangor, Malaysia"
+  },
+  "e3acb5f64a068c4f": {
+    "lat": 3.073076,
+    "lng": 101.7626851,
+    "geocodedAt": "2026-04-25T23:58:59.564Z",
+    "approxFromQuery": "Cheras, Selangor, Malaysia"
+  },
+  "9dfb589b64a9e0a5": {
+    "lat": 3.1102611,
+    "lng": 101.622502,
+    "geocodedAt": "2026-04-25T13:28:33.176Z"
+  },
+  "51b09a2bf186a8e0": {
+    "lat": 3.0196769,
+    "lng": 101.701218,
+    "geocodedAt": "2026-04-25T13:28:35.303Z"
+  },
+  "3047d949d7b2437e": {
+    "lat": 3.0165822,
+    "lng": 101.7040941,
+    "geocodedAt": "2026-04-25T13:28:36.752Z"
+  },
+  "8146e4eec4e3caec": {
+    "lat": 3.0449074,
+    "lng": 101.7731159,
+    "geocodedAt": "2026-04-25T13:28:39.221Z"
+  },
+  "1065726ad6bc1e4f": {
+    "lat": 3.0991919,
+    "lng": 101.7374229,
+    "geocodedAt": "2026-04-25T23:59:00.337Z",
+    "approxFromQuery": "Cheras, Kuala Lumpur, Malaysia"
+  },
+  "3143a3cb01b809e3": {
+    "lat": 2.9986946,
+    "lng": 101.6763313,
+    "geocodedAt": "2026-04-25T13:28:42.703Z"
+  },
+  "a3757bc702fe1473": {
+    "lat": 3.0314552,
+    "lng": 101.5885514,
+    "geocodedAt": "2026-04-25T13:28:44.937Z"
+  },
+  "b4835ae2713052ab": {
+    "lat": 3.1506567,
+    "lng": 101.593311,
+    "geocodedAt": "2026-04-25T13:28:46.690Z"
+  },
+  "a8769adc795813e3": {
+    "lat": 3.051487,
+    "lng": 101.5823339,
+    "geocodedAt": "2026-04-25T23:59:01.006Z",
+    "approxFromQuery": "Subang Jaya, Selangor, Malaysia"
+  },
+  "d237181390974f5f": {
+    "lat": 3.2062687,
+    "lng": 101.5800567,
+    "geocodedAt": "2026-04-25T23:59:01.651Z",
+    "approxFromQuery": "Sungai Buloh, Selangor, Malaysia"
+  },
+  "ebd52f9b1d528bf9": {
+    "lat": 3.0671132,
+    "lng": 101.5625549,
+    "geocodedAt": "2026-04-25T13:28:52.174Z"
+  },
+  "1bb8e0cd7b58e77b": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-25T23:59:02.342Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "f0a69707ef7b8462": {
+    "lat": 3.0141623,
+    "lng": 101.6157344,
+    "geocodedAt": "2026-04-25T13:28:55.859Z"
+  },
+  "ab445e7c21ce33c4": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-25T23:59:03.086Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "14919e1cd613955a": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-25T23:59:03.117Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "b128ba4dc25cf625": {
+    "lat": 3.0315706,
+    "lng": 101.5619659,
+    "geocodedAt": "2026-04-25T13:29:01.431Z"
+  },
+  "322c518c04a13b62": {
+    "lat": 3.2172464,
+    "lng": 101.6408331,
+    "geocodedAt": "2026-04-25T13:29:02.900Z"
+  },
+  "37caf05e74f47dbc": {
+    "lat": 3.0342324,
+    "lng": 101.6170345,
+    "geocodedAt": "2026-04-25T23:59:03.437Z",
+    "approxFromQuery": "Puchong, Selangor, Malaysia"
+  },
+  "806ec5a5b63e51cb": {
+    "lat": 3.2140294,
+    "lng": 101.634842,
+    "geocodedAt": "2026-04-25T23:59:03.846Z",
+    "approxFromQuery": "Kepong, Kuala Lumpur, Malaysia"
+  },
+  "af031e87f5e4d54c": {
+    "lat": 3.0342324,
+    "lng": 101.6170345,
+    "geocodedAt": "2026-04-25T23:59:03.866Z",
+    "approxFromQuery": "Puchong, Selangor, Malaysia"
+  },
+  "9e6e3e8d52659374": {
+    "lat": 2.9039612,
+    "lng": 101.7860889,
+    "geocodedAt": "2026-04-25T23:59:04.543Z",
+    "approxFromQuery": "Bangi, Selangor, Malaysia"
+  },
+  "6e6d7d604728342d": {
+    "lat": 3.0342324,
+    "lng": 101.6170345,
+    "geocodedAt": "2026-04-25T23:59:04.563Z",
+    "approxFromQuery": "Puchong, Selangor, Malaysia"
+  },
+  "84d0995365650470": {
+    "lat": 3.0340649,
+    "lng": 101.7055684,
+    "geocodedAt": "2026-04-25T23:59:05.208Z",
+    "approxFromQuery": "Seri Kembangan, Selangor, Malaysia"
+  },
+  "5dd205acadd2814e": {
+    "lat": 3.2022721,
+    "lng": 101.7208893,
+    "geocodedAt": "2026-04-25T13:29:15.220Z"
+  },
+  "24391ba3b112291a": {
+    "lat": 3.2037114,
+    "lng": 101.6966555,
+    "geocodedAt": "2026-04-25T13:29:17.438Z"
+  },
+  "f4513c35b2ec9478": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-25T23:59:05.226Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "1475ecbab1e18042": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-25T23:59:05.244Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "24325076da5d1ffa": {
+    "lat": 3.2381888,
+    "lng": 101.6814243,
+    "geocodedAt": "2026-04-25T23:59:06.093Z",
+    "approxFromQuery": "Batu Cave, Selangor, Malaysia"
+  },
+  "fe96ba440b402b04": {
+    "lat": 3.1502556,
+    "lng": 101.7602101,
+    "geocodedAt": "2026-04-25T23:59:06.110Z",
+    "approxFromQuery": "Ampang, Selangor, Malaysia"
+  },
+  "059d56d0c2f739a2": {
+    "lat": 3.0734004,
+    "lng": 101.6168921,
+    "geocodedAt": "2026-04-25T13:29:25.999Z"
+  },
+  "54f3ac0e4a7b8ec3": {
+    "lat": 3.0599814,
+    "lng": 101.6264254,
+    "geocodedAt": "2026-04-25T13:29:27.831Z"
+  },
+  "b9bd880cd7d214c0": {
+    "lat": 3.1502556,
+    "lng": 101.7602101,
+    "geocodedAt": "2026-04-25T23:59:06.127Z",
+    "approxFromQuery": "Ampang, Selangor, Malaysia"
+  },
+  "009331db032d6e9c": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:29:31.062Z",
+    "failed": true
+  },
+  "e1bf307fd09b2938": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:29:32.921Z",
+    "failed": true
+  },
+  "94c1e5103f5c0072": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:29:35.281Z",
+    "failed": true
+  },
+  "f291a5f590bf09e0": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:29:37.589Z",
+    "failed": true
+  },
+  "235672028a526358": {
+    "lat": 2.9705187,
+    "lng": 101.7744683,
+    "geocodedAt": "2026-04-25T13:29:39.012Z"
+  },
+  "f6351312befe4b51": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:29:40.499Z",
+    "failed": true
+  },
+  "1ec7d95146d7dcb9": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:29:42.446Z",
+    "failed": true
+  },
+  "2d2b62d5faf5be67": {
+    "lat": 3.2083304,
+    "lng": 101.304146,
+    "geocodedAt": "2026-04-26T00:19:27.808Z",
+    "approxFromQuery": "Selangor, Malaysia"
+  },
+  "47c827e454348692": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:19:27.848Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "b4fd5743e0f54d43": {
+    "lat": 3.0826551,
+    "lng": 101.70392,
+    "geocodedAt": "2026-04-25T13:29:47.691Z"
+  },
+  "8a69633ada1c4826": {
+    "lat": 3.1323737,
+    "lng": 101.6231936,
+    "geocodedAt": "2026-04-25T13:29:49.781Z"
+  },
+  "0451a8c13fdff7a7": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:19:27.894Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "068206dc01f99c33": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:19:27.932Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "933acac63688c688": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:19:27.967Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "39598b391a5222bd": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:19:28.006Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "da6ed5c4a1d83e94": {
+    "lat": 3.073076,
+    "lng": 101.7626851,
+    "geocodedAt": "2026-04-26T00:19:28.043Z",
+    "approxFromQuery": "Cheras, Selangor, Malaysia"
+  },
+  "7e67a131fd6ec654": {
+    "lat": 2.9637949,
+    "lng": 101.7550912,
+    "geocodedAt": "2026-04-25T13:30:01.038Z"
+  },
+  "e6673a0a407529c0": {
+    "lat": 2.9787053,
+    "lng": 101.7731404,
+    "geocodedAt": "2026-04-25T13:30:03.114Z"
+  },
+  "9bf42f419ac14c69": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:19:28.088Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "0e758364b96cb49e": {
+    "lat": 2.9444848,
+    "lng": 101.8760283,
+    "geocodedAt": "2026-04-26T00:04:09.782Z",
+    "approxFromQuery": "43500 Semenyih, Malaysia"
+  },
+  "9e23ab8394248dbb": {
+    "lat": 3.0340649,
+    "lng": 101.7055684,
+    "geocodedAt": "2026-04-26T00:04:10.616Z",
+    "approxFromQuery": "Seri Kembangan, Selangor, Malaysia"
+  },
+  "a90d4e7359d906fe": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:04:11.048Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "187f523817928718": {
+    "lat": 3.1893879,
+    "lng": 101.6908579,
+    "geocodedAt": "2026-04-25T13:30:13.634Z"
+  },
+  "a5070b3ccec5fb41": {
+    "lat": 2.8680243,
+    "lng": 101.6756275,
+    "geocodedAt": "2026-04-26T00:04:12.058Z",
+    "approxFromQuery": "Dengkil, Selangor, Malaysia"
+  },
+  "c5418ac2c48ffd17": {
+    "lat": 3.0897007,
+    "lng": 101.6941054,
+    "geocodedAt": "2026-04-26T00:04:12.683Z",
+    "approxFromQuery": "Kuchai, Kuala Lumpur, Malaysia"
+  },
+  "0c2a4675f31fb64c": {
+    "lat": 3.1656724,
+    "lng": 101.735074,
+    "geocodedAt": "2026-04-26T00:04:13.119Z",
+    "approxFromQuery": "Ampang, Kuala Lumpur, Malaysia"
+  },
+  "e3bcf34782d5c0d9": {
+    "lat": 3.0340649,
+    "lng": 101.7055684,
+    "geocodedAt": "2026-04-26T00:04:13.218Z",
+    "approxFromQuery": "Seri Kembangan, Selangor, Malaysia"
+  },
+  "7c659e5844934a12": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-26T00:04:13.950Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "e3af438a9dc5f115": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:04:14.918Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "8c65c789f390a543": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:04:15.072Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "42b0d7811acb1399": {
+    "lat": 3.0448394,
+    "lng": 101.4447363,
+    "geocodedAt": "2026-04-26T00:04:15.617Z",
+    "approxFromQuery": "Klang, Selangor, Malaysia"
+  },
+  "b802e51fcfd3f1ba": {
+    "lat": 3.0448394,
+    "lng": 101.4447363,
+    "geocodedAt": "2026-04-26T00:04:15.758Z",
+    "approxFromQuery": "Klang, Selangor, Malaysia"
+  },
+  "0f28d8ce609fdd2f": {
+    "lat": 3.0891083,
+    "lng": 101.6867542,
+    "geocodedAt": "2026-04-25T13:30:32.066Z"
+  },
+  "a3e565cf253a5d1f": {
+    "lat": 2.9039612,
+    "lng": 101.7860889,
+    "geocodedAt": "2026-04-26T00:04:16.342Z",
+    "approxFromQuery": "Bangi, Selangor, Malaysia"
+  },
+  "4a99a0908d36817e": {
+    "lat": 3.073076,
+    "lng": 101.7626851,
+    "geocodedAt": "2026-04-26T00:04:17.196Z",
+    "approxFromQuery": "Cheras, Selangor, Malaysia"
+  },
+  "ada6d7531bcd53d8": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:04:17.365Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "87acb3c926b06c56": {
+    "lat": 3.1536719,
+    "lng": 101.593544,
+    "geocodedAt": "2026-04-26T00:04:17.809Z",
+    "approxFromQuery": "Kota Damansara, Selangor, Malaysia"
+  },
+  "8064347c24a2a6b9": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:04:17.873Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "fbad0e129dedc86c": {
+    "lat": 3.2377959,
+    "lng": 101.6813757,
+    "geocodedAt": "2026-04-26T00:04:18.298Z",
+    "approxFromQuery": "Batu Caves, Selangor, Malaysia"
+  },
+  "6673045bb5fb589e": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:04:18.469Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "c60a6237b5b6370f": {
+    "lat": 2.9837958,
+    "lng": 101.8139236,
+    "geocodedAt": "2026-04-25T13:30:47.609Z"
+  },
+  "905ac85647f2c6dc": {
+    "lat": 3.0183181,
+    "lng": 101.5360925,
+    "geocodedAt": "2026-04-25T13:30:49.179Z"
+  },
+  "6dd5664435799df4": {
+    "lat": 3.2176717,
+    "lng": 101.7382793,
+    "geocodedAt": "2026-04-25T13:30:50.620Z"
+  },
+  "c780b2ad3a662dc9": {
+    "lat": 3.2377959,
+    "lng": 101.6813757,
+    "geocodedAt": "2026-04-26T00:04:18.687Z",
+    "approxFromQuery": "Batu Caves, Selangor, Malaysia"
+  },
+  "d7c811a3d98bfc57": {
+    "lat": 3.0988792,
+    "lng": 101.6454202,
+    "geocodedAt": "2026-04-26T00:19:28.133Z",
+    "approxFromQuery": "Petaling Jaya, Selangor, Malaysia"
+  },
+  "69c8def3f670f6a8": {
+    "lat": 3.0704888,
+    "lng": 101.5997412,
+    "geocodedAt": "2026-04-25T13:30:54.984Z"
+  },
+  "4c0007255aabe623": {
+    "lat": 3.0342324,
+    "lng": 101.6170345,
+    "geocodedAt": "2026-04-26T00:19:28.492Z",
+    "approxFromQuery": "Puchong, Selangor, Malaysia"
+  },
+  "d41bbb49526a4da4": {
+    "lat": 3.1893487,
+    "lng": 101.6811497,
+    "geocodedAt": "2026-04-26T00:19:29.239Z",
+    "approxFromQuery": "Jalan Ipoh, Kuala Lumpur, Malaysia"
+  },
+  "07f80782eef59761": {
+    "lat": 3.0991919,
+    "lng": 101.7374229,
+    "geocodedAt": "2026-04-26T00:19:29.758Z",
+    "approxFromQuery": "Cheras, Kuala Lumpur, Malaysia"
+  },
+  "7047010afcaab14d": {
+    "lat": 3.2342055,
+    "lng": 101.4258355,
+    "geocodedAt": "2026-04-26T00:19:30.242Z",
+    "approxFromQuery": "Puncak Alam, Selangor, Malaysia"
+  },
+  "41a47a004bc76e28": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:19:30.302Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "fe95bf7adafcf0c0": {
+    "lat": 3.0035078,
+    "lng": 101.5731634,
+    "geocodedAt": "2026-04-26T00:06:13.933Z",
+    "approxFromQuery": "47650, Malaysia"
+  },
+  "6160427a03431cca": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:06:15.076Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "855b291bd6f35e3f": {
+    "lat": 2.9762524,
+    "lng": 101.7803807,
+    "geocodedAt": "2026-04-25T13:31:10.055Z"
+  },
+  "2eb5f9998157ffe5": {
+    "lat": 3.0894376,
+    "lng": 101.6846759,
+    "geocodedAt": "2026-04-26T00:06:16.291Z",
+    "approxFromQuery": "Kuchai Lama, Kuala Lumpur, Malaysia"
+  },
+  "00669a6c1c065327": {
+    "lat": 3.0184076,
+    "lng": 101.7112276,
+    "geocodedAt": "2026-04-25T13:31:14.018Z"
+  },
+  "e3c77f67c2a426bd": {
+    "lat": 3.3015239,
+    "lng": 101.6002585,
+    "geocodedAt": "2026-04-25T13:31:15.771Z"
+  },
+  "123053ee0b35069c": {
+    "lat": 2.9842135,
+    "lng": 101.6200894,
+    "geocodedAt": "2026-04-25T13:31:17.864Z"
+  },
+  "d565e23636fb860e": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:06:17.308Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "4288ce1b9457db6f": {
+    "lat": 3.1044136,
+    "lng": 101.6898365,
+    "geocodedAt": "2026-04-25T13:31:21.689Z"
+  },
+  "f0629b82f597479d": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-26T00:06:18.221Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "ae6ca607e93c6708": {
+    "lat": 2.9948437,
+    "lng": 101.7896595,
+    "geocodedAt": "2026-04-26T00:06:19.189Z",
+    "approxFromQuery": "Kajang, Selangor, Malaysia"
+  },
+  "3fb10edd56beb371": {
+    "lat": 3.073076,
+    "lng": 101.7626851,
+    "geocodedAt": "2026-04-26T00:06:19.820Z",
+    "approxFromQuery": "Cheras, Selangor, Malaysia"
+  },
+  "7107de2a558a2ab1": {
+    "lat": 3.2341117,
+    "lng": 101.6881421,
+    "geocodedAt": "2026-04-25T13:31:29.422Z"
+  },
+  "7a1775900987f985": {
+    "lat": 3.2278836,
+    "lng": 101.5581363,
+    "geocodedAt": "2026-04-25T13:31:31.242Z"
+  },
+  "a3dddcba62714837": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:06:20.498Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "8e5b6e07e165f6aa": {
+    "lat": 3.0988792,
+    "lng": 101.6454202,
+    "geocodedAt": "2026-04-26T00:06:21.219Z",
+    "approxFromQuery": "Petaling Jaya, Selangor, Malaysia"
+  },
+  "e7b6170a4b468c55": {
+    "lat": 3.0989482,
+    "lng": 101.6292602,
+    "geocodedAt": "2026-04-25T13:31:37.053Z"
+  },
+  "6b6d0119ba2a75fd": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-26T00:06:22.735Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "4587e6c3fbaaa8e9": {
+    "lat": 2.9540793,
+    "lng": 101.7810018,
+    "geocodedAt": "2026-04-26T00:06:23.131Z",
+    "approxFromQuery": "Bandar Baru Bangi, Selangor, Malaysia"
+  },
+  "b85320ec34a4e385": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:06:23.488Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "af537cc8bb39be16": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:06:23.644Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "f4ba19fd4ea2e417": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:06:25.484Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "e7baec82e7f25e44": {
+    "lat": 3.2290422,
+    "lng": 101.6982566,
+    "geocodedAt": "2026-04-25T13:31:47.131Z"
+  },
+  "14725237f75e041c": {
+    "lat": 3.0988792,
+    "lng": 101.6454202,
+    "geocodedAt": "2026-04-26T00:06:26.929Z",
+    "approxFromQuery": "Petaling Jaya, Selangor, Malaysia"
+  },
+  "2dcd8b5683264454": {
+    "lat": 3.0895681,
+    "lng": 101.4502809,
+    "geocodedAt": "2026-04-25T13:31:50.949Z"
+  },
+  "b08f06ed4d2a950a": {
+    "lat": 2.8029227,
+    "lng": 101.8001051,
+    "geocodedAt": "2026-04-26T00:06:28.399Z",
+    "approxFromQuery": "Nilai, Negeri Sembilan, Malaysia"
+  },
+  "54d88d5a04347bdd": {
+    "lat": 3.0151265,
+    "lng": 101.6162349,
+    "geocodedAt": "2026-04-25T13:31:54.411Z"
+  },
+  "2c61ccb8962310b8": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:06:28.444Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "a4a236c9543c11ba": {
+    "lat": 3.1975774,
+    "lng": 101.7139655,
+    "geocodedAt": "2026-04-26T00:06:29.164Z",
+    "approxFromQuery": "Setapak, Kuala Lumpur, Malaysia"
+  },
+  "efc5067e5ff5c103": {
+    "lat": 2.9852237,
+    "lng": 101.627228,
+    "geocodedAt": "2026-04-25T13:32:00.486Z"
+  },
+  "21a4fa27063a88f6": {
+    "lat": 3.0890799,
+    "lng": 101.5458404,
+    "geocodedAt": "2026-04-25T13:32:02.235Z"
+  },
+  "7e670f7de863f604": {
+    "lat": 3.0399869,
+    "lng": 101.6994347,
+    "geocodedAt": "2026-04-25T13:32:03.658Z"
+  },
+  "ced19c6fc0a00108": {
+    "lat": 2.9448373,
+    "lng": 101.5321577,
+    "geocodedAt": "2026-04-26T00:06:30.395Z",
+    "approxFromQuery": "Tropicana Aman, Selangor, Malaysia"
+  },
+  "cdb2ad5e50876345": {
+    "lat": 3.0988792,
+    "lng": 101.6454202,
+    "geocodedAt": "2026-04-26T00:06:30.430Z",
+    "approxFromQuery": "Petaling Jaya, Selangor, Malaysia"
+  },
+  "29e24fe463fb931c": {
+    "lat": 3.2377959,
+    "lng": 101.6813757,
+    "geocodedAt": "2026-04-26T00:06:30.461Z",
+    "approxFromQuery": "Batu Caves, Selangor, Malaysia"
+  },
+  "cac267455da6976e": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-26T00:19:30.353Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "c9330446aad9f787": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-26T00:19:30.399Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "90e0042bd664e8ec": {
+    "lat": 3.1505141,
+    "lng": 101.7600712,
+    "geocodedAt": "2026-04-26T00:19:30.723Z",
+    "approxFromQuery": "Ampang, Selangor, Malaysia"
+  },
+  "ddf3017f62119167": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:32:18.608Z",
+    "failed": true
+  },
+  "556d000f5594c94e": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:32:20.511Z",
+    "failed": true
+  },
+  "9f1715db49d61e3a": {
+    "lat": 3.1950619,
+    "lng": 101.5660985,
+    "geocodedAt": "2026-04-25T13:32:21.981Z"
+  },
+  "7b8de9f3c9524a37": {
+    "lat": 3.0049825,
+    "lng": 101.538784,
+    "geocodedAt": "2026-04-25T13:32:23.980Z"
+  },
+  "7d8f168a68c87ded": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:32:25.999Z",
+    "failed": true
+  },
+  "8a9dcf7ca67fb563": {
+    "lat": 3.1673334,
+    "lng": 101.5708563,
+    "geocodedAt": "2026-04-25T13:32:27.397Z"
+  },
+  "fb239203ce2b430e": {
+    "lat": 3.1939699,
+    "lng": 101.6290648,
+    "geocodedAt": "2026-04-25T13:32:29.320Z"
+  },
+  "9cf4321960e5f19d": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:32:31.418Z",
+    "failed": true
+  },
+  "e5aef0fd0b6eedf3": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:32:33.616Z",
+    "failed": true
+  },
+  "e3a64859cedc68c8": {
+    "lat": 3.0154769,
+    "lng": 101.6132809,
+    "geocodedAt": "2026-04-25T13:32:35.626Z"
+  },
+  "dc6167d88f5f2452": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:32:37.476Z",
+    "failed": true
+  },
+  "78a66fd391fdc67f": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:21:46.017Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "4c2cd636c2e45a83": {
+    "lat": 3.0988792,
+    "lng": 101.6454202,
+    "geocodedAt": "2026-04-26T00:21:46.063Z",
+    "approxFromQuery": "Petaling Jaya, Selangor, Malaysia"
+  },
+  "9b1b59d439ca55f6": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:46.098Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "e030b07dbb467765": {
+    "lat": 3.0680812,
+    "lng": 101.5927839,
+    "geocodedAt": "2026-04-25T13:32:44.291Z"
+  },
+  "b8fa8fad8dfd9f27": {
+    "lat": 2.969761,
+    "lng": 101.7739434,
+    "geocodedAt": "2026-04-25T13:32:46.346Z"
+  },
+  "c394aff62503006a": {
+    "lat": 3.155518,
+    "lng": 101.546576,
+    "geocodedAt": "2026-04-25T13:32:48.195Z"
+  },
+  "747aef0a54d156ed": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:46.143Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "be44a4659997d664": {
+    "lat": 3.1352545,
+    "lng": 101.6210233,
+    "geocodedAt": "2026-04-25T13:32:51.351Z"
+  },
+  "9a6875bb6bd7c13c": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:46.207Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "08e3ce087c0b9907": {
+    "lat": 3.0291306,
+    "lng": 101.7472119,
+    "geocodedAt": "2026-04-26T00:21:47.070Z",
+    "approxFromQuery": "Balakong, Selangor, Malaysia"
+  },
+  "b3b373f10b891bae": {
+    "lat": 2.9546038,
+    "lng": 101.7791072,
+    "geocodedAt": "2026-04-25T13:32:57.309Z"
+  },
+  "d71912f468d4bec1": {
+    "lat": 3.0988792,
+    "lng": 101.6454202,
+    "geocodedAt": "2026-04-26T00:21:47.162Z",
+    "approxFromQuery": "Petaling Jaya, Selangor, Malaysia"
+  },
+  "43c3a1f692b5402f": {
+    "lat": 3.2312176,
+    "lng": 101.7244253,
+    "geocodedAt": "2026-04-26T00:21:48.001Z",
+    "approxFromQuery": "Gombak, Kuala Lumpur, Malaysia"
+  },
+  "6452e626127b9b3a": {
+    "lat": 3.197475,
+    "lng": 101.7280755,
+    "geocodedAt": "2026-04-25T13:33:03.110Z"
+  },
+  "91acc9140a84376c": {
+    "lat": 3.0448394,
+    "lng": 101.4447363,
+    "geocodedAt": "2026-04-26T00:21:48.043Z",
+    "approxFromQuery": "Klang, Selangor, Malaysia"
+  },
+  "7607b039fa015be4": {
+    "lat": 3.3036076,
+    "lng": 101.5984218,
+    "geocodedAt": "2026-04-25T13:33:06.825Z"
+  },
+  "1b37645c60541dfd": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:48.075Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "7fc6725389ae65ea": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:48.112Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "b08c08ce0146b508": {
+    "lat": 3.3189044,
+    "lng": 101.5750187,
+    "geocodedAt": "2026-04-26T00:21:48.924Z",
+    "approxFromQuery": "Rawang, Selangor, Malaysia"
+  },
+  "f437d32d027110fb": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:49.008Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "44f59c32963c5f2d": {
+    "lat": 3.0730233,
+    "lng": 101.6025338,
+    "geocodedAt": "2026-04-25T13:33:15.630Z"
+  },
+  "8420845c7009dfd9": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:49.060Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "073b31c691e15d13": {
+    "lat": 3.2062633,
+    "lng": 101.581848,
+    "geocodedAt": "2026-04-26T00:21:49.538Z",
+    "approxFromQuery": "Sungai Buloh, Selangor, Malaysia"
+  },
+  "e3e31ea0f62e50a0": {
+    "lat": 3.1407927,
+    "lng": 101.6939439,
+    "geocodedAt": "2026-04-26T00:21:49.644Z",
+    "approxFromQuery": "Kuala Lumpur, Kuala Lumpur, Malaysia"
+  },
+  "35690bd4ebf71f14": {
+    "lat": 2.0323472,
+    "lng": 103.3190766,
+    "geocodedAt": "2026-04-26T00:21:50.516Z",
+    "approxFromQuery": "Kluang, Johor, Malaysia"
+  },
+  "449bff0f480d9c9d": {
+    "lat": 3.2062633,
+    "lng": 101.581848,
+    "geocodedAt": "2026-04-26T00:21:50.599Z",
+    "approxFromQuery": "Sungai Buloh, Selangor, Malaysia"
+  },
+  "d42fad561b8649cd": {
+    "lat": 3.0739429,
+    "lng": 101.5185278,
+    "geocodedAt": "2026-04-26T00:21:50.642Z",
+    "approxFromQuery": "Shah Alam, Selangor, Malaysia"
+  },
+  "7700086f67903418": {
+    "lat": 2.9473911,
+    "lng": 101.8459911,
+    "geocodedAt": "2026-04-26T00:21:50.680Z",
+    "approxFromQuery": "Semenyih, Selangor, Malaysia"
+  },
+  "cf120cf2b01f8ad0": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:33:30.550Z",
+    "failed": true
+  },
+  "6aa65431088053dc": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:33:32.368Z",
+    "failed": true
+  },
+  "0a6064f604d62ff5": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:33:34.035Z",
+    "failed": true
+  },
+  "461b3dbb18eee5ba": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:33:36.050Z",
+    "failed": true
+  },
+  "3e072efac6e30b91": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:33:37.925Z",
+    "failed": true
+  },
+  "cdb9be5cd901a918": {
+    "lat": null,
+    "lng": null,
+    "geocodedAt": "2026-04-25T13:33:40.350Z",
+    "failed": true
+  }
+}

@@ -1,4 +1,27 @@
+import { createHash } from 'crypto';
 import { Dealer } from './types';
+import geocodeCacheJson from '../../geocode-cache.json';
+
+interface CachedCoord {
+  lat: number | null;
+  lng: number | null;
+  geocodedAt?: string;
+  failed?: boolean;
+}
+
+const geocodeCache = geocodeCacheJson as Record<string, CachedCoord>;
+
+function addressHash(addr: string): string {
+  const normalised = addr.replace(/\s+/g, ' ').trim().toLowerCase();
+  return createHash('sha1').update(normalised).digest('hex').slice(0, 16);
+}
+
+function lookupCoords(address: string): { latitude?: number; longitude?: number } {
+  if (!address) return {};
+  const entry = geocodeCache[addressHash(address)];
+  if (!entry || entry.failed || entry.lat == null || entry.lng == null) return {};
+  return { latitude: entry.lat, longitude: entry.lng };
+}
 
 export const DEALER_SHEET_CSV_URL =
   'https://docs.google.com/spreadsheets/d/1vw2xxD83jNNkhuGQd-NYQBctMsVSxOF7M7D7hfdTtvg/export?format=csv&gid=1276340913';
@@ -141,16 +164,18 @@ export function parseDealerSheet(csvText: string): Dealer[] {
     const whatsapp = whatsappRaw.replace(/[^0-9]/g, '');
     const phone = cols.phone >= 0 ? (r[cols.phone] ?? '').trim() : '';
     const products = Array.from(new Set(extractProducts(r, cols)));
+    const address = cols.address >= 0 ? (r[cols.address] ?? '').trim() : '';
 
     dealers.push({
       id: String(dealers.length + 1),
       name,
-      address: cols.address >= 0 ? (r[cols.address] ?? '').trim() : '',
+      address,
       phone: phone || (whatsapp ? `+${whatsapp}` : ''),
       whatsapp,
       state: cols.state >= 0 ? (r[cols.state] ?? '').trim() : '',
       area: cols.area >= 0 ? (r[cols.area] ?? '').trim() : '',
       products,
+      ...lookupCoords(address),
     });
   }
   return dealers;
