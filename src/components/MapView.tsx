@@ -21,11 +21,13 @@ function escapeHtml(s: string): string {
   );
 }
 
-const dealerIconHtml = `<div style="background:#00529B;width:32px;height:32px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;">
+// Default Michelin Licensee dealer pin — Michelin blue
+const dealerIconHtml = `<div style="background:#0033A0;width:32px;height:32px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
 </div>`;
 
-const selectedIconHtml = `<div style="background:#F47D21;width:40px;height:40px;border-radius:50%;border:4px solid white;box-shadow:0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;">
+// Selected dealer pin — Tayarlo magenta to pop against the cluster of blue
+const selectedIconHtml = `<div style="background:#E6116A;width:40px;height:40px;border-radius:50%;border:4px solid white;box-shadow:0 4px 12px rgba(230,17,106,0.45);display:flex;align-items:center;justify-content:center;">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
 </div>`;
 

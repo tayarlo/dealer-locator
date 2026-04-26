@@ -30,7 +30,7 @@ export default function SearchBar({ value, onChange, placeholder }: SearchBarPro
         value={local}
         onChange={e => setLocal(e.target.value)}
         placeholder={placeholder ?? 'Search by name, area, or product…'}
-        className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-lg bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00529B]/20 focus:border-[#00529B] transition"
+        className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-lg bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E6116A]/20 focus:border-[#E6116A] transition"
       />
       {local && (
         <button

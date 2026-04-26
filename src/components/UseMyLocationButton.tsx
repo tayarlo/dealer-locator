@@ -51,7 +51,7 @@ export default function UseMyLocationButton({ onLocate, active }: Props) {
         disabled={loading}
         className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition ${
           active
-            ? 'bg-[#00529B] text-white hover:bg-[#0077D9]'
+            ? 'bg-[#E6116A] text-white hover:bg-[#C00E5C]'
             : 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
         } ${loading ? 'opacity-70 cursor-wait' : ''}`}
       >
