@@ -1,4 +1,4 @@
-import { Dealer } from './types';
+import { Coords, Dealer, DealerWithDistance } from './types';
 
 export const SAMPLE_DEALERS: Dealer[] = [
   {
@@ -323,4 +323,37 @@ export function filterDealers(dealers: Dealer[], filters: { state: string; area:
 export function getUniqueAreas(dealers: Dealer[]): string[] {
   const areas = new Set(dealers.map(d => d.area).filter(Boolean));
   return Array.from(areas).sort();
+}
+
+export function searchDealers(dealers: Dealer[], query: string): Dealer[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return dealers;
+  return dealers.filter(d =>
+    d.name.toLowerCase().includes(q) ||
+    d.address.toLowerCase().includes(q) ||
+    d.area.toLowerCase().includes(q) ||
+    d.state.toLowerCase().includes(q) ||
+    d.products.some(p => p.toLowerCase().includes(q))
+  );
+}
+
+export function haversineKm(a: Coords, b: Coords): number {
+  const R = 6371;
+  const toRad = (x: number) => (x * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+export function sortByDistance(dealers: Dealer[], from: Coords): DealerWithDistance[] {
+  return dealers
+    .filter(d => d.latitude != null && d.longitude != null)
+    .map(d => ({
+      ...d,
+      distanceKm: haversineKm(from, { lat: d.latitude as number, lng: d.longitude as number }),
+    }))
+    .sort((a, b) => a.distanceKm - b.distanceKm);
 }

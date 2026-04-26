@@ -9,6 +9,16 @@ export interface Dealer {
   products: string[];
   latitude?: number;
   longitude?: number;
+  hours?: string;
+}
+
+export interface DealerWithDistance extends Dealer {
+  distanceKm: number;
+}
+
+export interface Coords {
+  lat: number;
+  lng: number;
 }
 
 export interface FilterState {
