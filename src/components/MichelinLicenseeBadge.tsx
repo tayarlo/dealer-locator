@@ -30,7 +30,7 @@ export default function MichelinLicenseeBadge({
           style={{ mixBlendMode: 'multiply' }}
           draggable={false}
         />
-        Authorised Licensee
+        Authorised Vehicle Accessories Dealer
       </span>
     );
   }
@@ -61,10 +61,10 @@ export default function MichelinLicenseeBadge({
           Authorised
         </span>
         <span
-          className="text-[12px] font-bold leading-none"
+          className="text-[12px] font-bold leading-none whitespace-nowrap"
           style={{ color: 'var(--michelin-blue)' }}
         >
-          Vehicle Accessory Licensee
+          Vehicle Accessories Dealer
         </span>
       </div>
     </div>
