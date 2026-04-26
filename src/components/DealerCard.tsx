@@ -2,7 +2,6 @@
 
 import { Clock, MapPin, MessageCircle, Navigation, Phone } from 'lucide-react';
 import { Dealer, DealerWithDistance } from '@/lib/types';
-import MichelinLicenseeBadge from './MichelinLicenseeBadge';
 
 interface DealerCardProps {
   dealer: Dealer | DealerWithDistance;
@@ -48,19 +47,16 @@ export default function DealerCard({ dealer, isSelected, onSelect }: DealerCardP
           : 'border-gray-100 bg-white hover:border-gray-200 hover:shadow-md'
       }`}
     >
-      {/* Trust strip + distance */}
-      <div className="flex items-center justify-between gap-2 mb-3">
-        <MichelinLicenseeBadge variant="compact" />
+      <div className="flex justify-between items-start gap-3 mb-3">
+        <h3 className="font-bold text-gray-900 text-base sm:text-lg leading-snug">
+          {dealer.name}
+        </h3>
         {distanceKm != null && (
-          <span className="px-2.5 py-0.5 bg-[#E6116A] text-white text-xs rounded-full whitespace-nowrap font-semibold">
+          <span className="px-2.5 py-0.5 bg-[#E6116A] text-white text-xs rounded-full whitespace-nowrap font-semibold flex-shrink-0">
             {formatDistance(distanceKm)}
           </span>
         )}
       </div>
-
-      <h3 className="font-bold text-gray-900 text-base sm:text-lg leading-snug mb-3">
-        {dealer.name}
-      </h3>
 
       <div className="flex items-start gap-2 text-gray-600 mb-2">
         <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#E6116A]" />

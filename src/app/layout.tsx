@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Tayarlo — Authorised Michelin Vehicle Accessories Dealer Locator',
   description:
-    'Find an Official Michelin Licensee near you. Every dealer in the Tayarlo network carries genuine Michelin vehicle accessories — TPMS valve caps, tyre inflators, wiper blades, wiper fluid, and tyre repair kits.',
+    'Find an Official Michelin Licensee near you. Every dealer in the Tayarlo network carries genuine Michelin vehicle accessories — TPMS, tyre inflators, wiper blades, wiper fluid, and tyre repair kits.',
 };
 
 export default function RootLayout({
